@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dépôts de marques</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<!-- Aperçu du lien (Teams, WhatsApp, Slack…) : les adresses doivent être complètes -->
+<meta name="description" content="Portefeuille de marques François Lurton : pays de dépôt et échéances. Accès réservé.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="François Lurton">
+<meta property="og:title" content="Dépôts de marques">
+<meta property="og:description" content="Portefeuille de marques François Lurton : pays de dépôt et échéances. Accès réservé.">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://domaines-francois-lurton.github.io/DM/">
+<meta property="og:image" content="https://domaines-francois-lurton.github.io/DM/assets/img/apercu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dépôts de marques, François Lurton">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/connexion.css">
+</head>
+<body class="cx">
+
+<!-- ============ CONNEXION (français seul) ============ -->
+<main id="connexion" hidden>
+  <div class="cx-card">
+    <section class="cx-brand">
+      <div class="cx-badge">DM</div>
+      <h1 class="cx-name">Dépôts de marques</h1>
+      <p class="cx-tagline">Dépôt / Renouvellement</p>
+    </section>
+    <section class="cx-side">
+      <form id="loginForm" novalidate>
+        <h2>Connexion</h2>
+        <label for="password">Mot de passe</label>
+        <div class="cx-field">
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+          <button type="button" class="cx-toggle" aria-controls="password" aria-pressed="false">Afficher</button>
+        </div>
+        <div class="cx-error mdp" role="alert">Mot de passe incorrect. Réessayez.</div>
+        <div class="cx-error chargement" role="alert">Impossible de charger le portefeuille. Vérifiez la connexion puis rechargez la page.</div>
+        <button type="submit" class="cx-submit">Se connecter</button>
+      </form>
+      <img class="cx-logo" src="assets/img/logo-fl.png" alt="François Lurton">
+    </section>
+  </div>
+</main>
+
+<!-- ============ ÉCRAN PRINCIPAL ============ -->
+<div class="shell hidden" id="app">
+  <div class="blob blob--1" aria-hidden="true"></div>
+  <div class="blob blob--2" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="dm" aria-hidden="true">DM</span>
+      <span class="brand__name" data-i18n="appName"></span>
+    </div>
+    <div class="header-right">
+      <div class="langs" id="langs"></div>
+      <button class="link" id="logout" data-i18n="logout"></button>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <h1 class="hero__title" id="pageTitle"></h1>
+      <p class="hero__subtitle" id="asof"></p>
+    </div>
+
+    <div class="tabs"><div class="langs" id="tabs"></div></div>
+
+    <div class="search">
+      <svg class="search__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="oklch(0.55 0.01 250)" stroke-width="2"/><line x1="21" y1="21" x2="16.5" y2="16.5" stroke="oklch(0.55 0.01 250)" stroke-width="2" stroke-linecap="round"/></svg>
+      <input class="search__input" id="q" type="search" autocomplete="off">
+      <span class="search__hint" aria-hidden="true">/</span>
+    </div>
+
+    <dl class="facts" id="facts"></dl>
+
+    <section class="filters glass">
+      <div class="filters-row">
+        <label class="select"><span data-i18n="country"></span><select id="fPays"></select></label>
+        <label class="select"><span data-i18n="holder"></span><select id="fTit"></select></label>
+        <label class="select"><span data-i18n="status"></span><select id="fStatut"></select></label>
+        <label class="select"><span data-i18n="nature"></span><select id="fNature"></select></label>
+      </div>
+      <div class="filters-foot">
+        <div class="chips" id="fHorizon"></div>
+        <div class="chips" id="fClasse"></div>
+        <button class="link" id="reset" data-i18n="reset"></button>
+      </div>
+    </section>
+
+    <section>
+      <div class="section__head"><h2 class="section__title" id="secTitle"></h2><span class="section__count" id="secCount"></span>
+        <div class="actions">
+          <button class="btn-ghost" id="btnPrint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg><span data-i18n="print"></span></button>
+          <button class="btn-ghost" id="btnExport"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><span data-i18n="export"></span></button>
+        </div>
+      </div>
+      <div id="results"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p data-i18n="foot"></p></footer>
+</div>
+
+<div id="print"></div>
+
+<script type="module" src="assets/js/connexion.js"></script>
+</body>
+</html>

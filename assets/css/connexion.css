@@ -1,0 +1,66 @@
+/* Connexion — reprise de page connexion/export/connexion.html (Figtree, couleur de l'app rouge). */
+body.cx{--app:oklch(0.52 0.16 25);--cx-ink:#1b1a24;--cx-muted:#6b6860;--cx-line:#d9d5cc;--cx-error:#b0362f;
+  font-family:Figtree,system-ui,sans-serif;color:var(--cx-ink);background:#f2f0ec}
+#connexion[hidden]{display:none}
+#connexion{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
+#connexion .cx-card{width:100%;max-width:820px;min-height:500px;background:#fff;border-radius:18px;overflow:hidden;
+  display:grid;grid-template-columns:minmax(240px,320px) minmax(0,1fr);
+  box-shadow:0 2px 4px rgba(27,26,36,.04),0 12px 24px rgba(27,26,36,.08),0 32px 64px rgba(27,26,36,.10)}
+#connexion .cx-brand{background:var(--app);color:#fff;padding:40px;display:flex;flex-direction:column}
+#connexion .cx-badge{width:56px;height:56px;border-radius:15px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px}
+#connexion .cx-name{margin:auto 0 0;font-size:30px;font-weight:700;line-height:1.1;letter-spacing:-.01em}
+#connexion .cx-tagline{margin:8px 0 0;font-size:16px}
+#connexion .cx-side{padding:48px 52px 32px;display:flex;flex-direction:column}
+#connexion form{margin:auto 0;display:flex;flex-direction:column}
+#connexion h2{margin:0;font-size:22px;font-weight:600}
+#connexion label{margin-top:24px;font-size:13px;font-weight:500;color:#4a4740}
+#connexion .cx-field{margin-top:8px;display:flex;align-items:center;gap:8px;height:48px;padding:0 6px 0 14px;border:1px solid var(--cx-line);border-radius:10px;background:#fff}
+#connexion .cx-field:focus-within{border-color:var(--cx-ink)}
+#connexion .cx-field input{flex:1;min-width:0;border:0;outline:0;font:inherit;font-size:15px;background:transparent;color:var(--cx-ink)}
+#connexion .cx-toggle{border:0;background:transparent;font:inherit;font-size:13px;font-weight:500;color:var(--cx-muted);cursor:pointer;padding:6px 8px;border-radius:6px}
+#connexion .cx-toggle:hover{background:#f2f0eb}
+#connexion .cx-error{display:none;margin-top:8px;font-size:13px;color:var(--cx-error)}
+#connexion form.has-error .cx-field{border:1.5px solid #c8423a;background:#fdf6f5}
+#connexion form.has-error .cx-error.mdp{display:block}
+#connexion form.load-error .cx-error.chargement{display:block}
+#connexion .cx-submit{margin-top:18px;height:48px;border:0;border-radius:10px;background:var(--cx-ink);color:#fff;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+#connexion .cx-submit:hover{background:#2e2c3a}
+#connexion .cx-submit:disabled{opacity:.6;cursor:progress}
+/* logo recadré sur le dessin (720×347) : 26 px = même taille visible qu'avant */
+#connexion .cx-logo{height:26px;align-self:flex-end;opacity:.85}
+
+@media (max-width:700px){
+  body.cx{background:#fff}
+  #connexion{padding:0;align-items:stretch}
+  #connexion .cx-card{display:flex;flex-direction:column;min-height:100vh;border-radius:0;box-shadow:none}
+  #connexion .cx-brand{padding:56px 24px 28px;border-radius:0 0 24px 24px}
+  #connexion .cx-name{margin-top:28px;font-size:28px}
+  #connexion .cx-tagline{margin-top:6px}
+  #connexion .cx-side{flex:1;padding:32px 24px 36px}
+  #connexion form{margin:0}
+  #connexion label{margin-top:20px;font-size:14px}
+  #connexion .cx-field{height:52px;border-radius:12px;padding:0 4px 0 14px}
+  #connexion .cx-field input{font-size:16px}
+  #connexion .cx-toggle{min-width:76px;height:44px;font-size:14px}
+  #connexion .cx-error{font-size:14px}
+  #connexion .cx-submit{margin-top:20px;height:52px;border-radius:12px;font-size:16px}
+  #connexion .cx-logo{height:44px;margin-top:auto;align-self:center;padding-top:0}
+  #connexion form{margin-bottom:32px}
+}
+
+/* Ordinateur : carte réduite de 15 % (le texte saisi reste à 14 px, le logo garde sa taille) */
+@media (min-width:701px){
+  #connexion .cx-card{max-width:700px;min-height:425px;border-radius:15px}
+  #connexion .cx-brand{padding:34px}
+  #connexion .cx-badge{width:48px;height:48px;border-radius:13px;font-size:17px}
+  #connexion .cx-name{font-size:26px}
+  #connexion .cx-tagline{margin-top:7px;font-size:14px}
+  #connexion .cx-side{padding:41px 44px 27px}
+  #connexion h2{font-size:19px}
+  #connexion label{margin-top:20px;font-size:12px}
+  #connexion .cx-field{margin-top:7px;height:41px;padding:0 5px 0 12px;border-radius:9px}
+  #connexion .cx-field input{font-size:14px}
+  #connexion .cx-toggle{font-size:12px}
+  #connexion .cx-error{font-size:12px}
+  #connexion .cx-submit{margin-top:15px;height:41px;border-radius:9px;font-size:14px}
+}
